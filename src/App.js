@@ -10,7 +10,7 @@ const Box = () => {
 
   return (
     <mesh ref={mesh}>
-      <boxGeometry args={[12, 12, 2]} />
+      <boxGeometry args={[12, 14, 2]} />
       <meshLambertMaterial attach='material' color='red' />
       <Html rotateX={-Math.PI / 2} position={[0.1,0.5,1.01]} transform occlude>
               <div onPointerDown={(e) => e.stopPropagation()} className='wrapper'>

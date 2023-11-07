@@ -13,7 +13,7 @@
 
 .wrapper {
   padding: 10px;
-  width: 1000px;
+  width: 1800px;
   height: 1000px;
   transform: scale(0.7);
   transform-origin: top left;
@@ -116,11 +116,9 @@ img {
 body {
   max-width: 100%;
   overflow-x: hidden;
+  background: #202025;
 }
 
-body {
-  background-color: #f6f6f6;
-}
 
 nav {
   display: flex;

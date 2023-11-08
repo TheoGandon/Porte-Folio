@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Html, Environment } from '@react-three/drei';
-import './App.css';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import '../App.css';
 
 function MyRotatingBox() {
     const mesh = React.useRef();
@@ -10,6 +10,7 @@ function MyRotatingBox() {
       const a = clock.getElapsedTime();
       mesh.current.rotation.x = a;
     });
+}
 
 const Box = () => {
   const mesh = useRef();
@@ -21,8 +22,6 @@ const Box = () => {
     </mesh>
   );
 };
-
-
 
 const Start = () => {
   return (

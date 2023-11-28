@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom"
-import Main from "./components/Main"
-import Start from "./components/Start"
+import Main from "./Main"
+import Start from "./Start"
+import Contact from "./Contact";
+import Presentation from "./Presentation";
 
 function App() {
   return (
@@ -8,8 +10,10 @@ function App() {
       <Routes>
         <Route path="/" element={ <Main /> } />
         <Route path="/start" element={ <Start /> } />
+        <Route path="/contact" element={ <Contact /> } />
+        <Route path="/presentation" element={ <Presentation /> } />
       </Routes>
     </div>
   )
 }
-export default App
+export default App;

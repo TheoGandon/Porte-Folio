@@ -1,3 +1,7 @@
+.App {
+  background-color: #f2f2f2; 
+}
+
 
 .portfolio-container {
     display: flex;
@@ -24,6 +28,20 @@
   
   p {
     color: #555;
+    margin: 5%;
+  }
+
+  .text-presentation {
+    font-size: 20px;
+  }
+
+  .close-cv {
+    margin-bottom: 2%;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
   
   .buttons-container {
@@ -55,17 +73,34 @@
 
   .skill-bg {
     background-color: #f2f2f2;
+    display: flex;
+    
   }
-  .skills-container {
-    max-width: 1000px;
-    margin-left: auto;
+
+.test-container {
+    max-width: 1100px;
     margin-right: auto;
+    margin-left: auto;
     width: 100%;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: center;
     background-color: #FFFFFF;
+    padding-bottom: 5%;
+
+}
+  .skills-container {
+    max-width: 500px;
+    margin-right: auto;
+    margin-left: 3%;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding-bottom: 5%;
   }
   
   h2 {
@@ -75,9 +110,7 @@
   }
   
   .icons-container {
-    display: flex;
     justify-content: center;
-    flex-wrap: wrap;
   }
   
   .icons-container div {
@@ -92,3 +125,17 @@
   a:hover {
     color: #3498db;
   }
+
+  .modal {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 900px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: none;
+}

@@ -1,36 +1,44 @@
-// NavBar.js
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import '../css/NavBar.css';
 import Typewriter from 'typewriter-effect';
+import '../css/NavBar.css';
 
 const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-      },
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
     },
-  };
-  
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
-  
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <motion.div
-      className='nav-main'
-      variants={container} initial="hidden" animate="visible">
+    <motion.div className={`nav-main ${isOpen ? 'nav-open' : ''}`} variants={container} initial="hidden" animate="visible">
       <div className='nav-title'>
-      <Typewriter options={{autoStart: true, loop:true, delay:50, strings:'Theo Gandon'}} variants={item}/>
+        <Typewriter options={{ autoStart: true, loop: true, delay: 50, strings: 'Theo Gandon' }} variants={item} />
+      </div>
+      <div className='burger-icon' onClick={toggleMenu}>
+        <div className={`bar ${isOpen ? 'animate' : ''}`}></div>
+        <div className={`bar ${isOpen ? 'animate' : ''}`}></div>
+        <div className={`bar ${isOpen ? 'animate' : ''}`}></div>
       </div>
       <div className='nav-linker'>
         <motion.div className='nav-link' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} variants={item}>

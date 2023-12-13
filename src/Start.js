@@ -1,32 +1,33 @@
-import * as THREE from 'three'
+import * as THREE from 'three';
 import React, { useRef, Suspense } from 'react';
-import './App.css';
-import './css/Start.css'
+import { useNavigate } from 'react-router-dom';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Html, Environment, useGLTF, ContactShadows, OrbitControls } from '@react-three/drei';
 import Main from './Main';
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Html, Environment, useGLTF, ContactShadows, OrbitControls } from '@react-three/drei'
+import './css/Start.css';
 
 function Model(props) {
-  const group = useRef()
-  // Load model
-  const { nodes, materials } = useGLTF('/mac-draco.glb')
-  // Make it float
+  const group = useRef();
+  const navigate = useNavigate();
+
+  const { nodes, materials } = useGLTF('/mac-draco.glb');
+
   useFrame((state) => {
-    const t = state.clock.getElapsedTime()
-    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, Math.cos(t / 2) / 20 + 0.25, 0.1)
-    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, Math.sin(t / 4) / 20, 0.1)
-    group.current.rotation.z = THREE.MathUtils.lerp(group.current.rotation.z, Math.sin(t / 8) / 20, 0.1)
-    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, (-2 + Math.sin(t / 2)) / 2, 0.1)
-  })
+    const t = state.clock.getElapsedTime();
+    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, Math.cos(t / 2) / 20 + 0.25, 0.02);
+    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, Math.sin(t / 4) / 20, 0.02);
+    group.current.rotation.z = THREE.MathUtils.lerp(group.current.rotation.z, Math.sin(t / 8) / 20, 0.02);
+    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, (-2 + Math.sin(t / 2)) / 2, 0.02);
+  });
+
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} dispose={null} onClick={() => navigate('/presentation')}>
       <group rotation-x={-0.425} position={[0, -0.04, 0.41]}>
         <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh material={materials.aluminium} geometry={nodes['Cube008'].geometry} />
           <mesh material={materials['matte.001']} geometry={nodes['Cube008_1'].geometry} />
           <mesh geometry={nodes['Cube008_2'].geometry}>
-            {/* Drei's HTML component can "hide behind" canvas geometry */}
-            <Html className="content" rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude>
+            <Html className="content" rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude onClick={() => navigate('/presentation')}>
               <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
                 <Main />
               </div>
@@ -41,12 +42,14 @@ function Model(props) {
       </group>
       <mesh material={materials.touchbar} geometry={nodes.touchbar.geometry} position={[0, -0.03, 1.2]} />
     </group>
-  )
+  );
 }
 
-export default function Start() {
+function Start() {
+  const navigate = useNavigate();
+
   return (
-    <Canvas camera={{ position: [-5, 0, -15], fov: 55 }}>
+    <Canvas style={{ position: 'absolute', top: 0, left: 0 }} camera={{ position: [-5, 0, -15], fov: 55 }} gl={{ logarithmicDepthBuffer: true }}>
       <pointLight position={[10, 10, 10]} intensity={1.5} />
       <Suspense fallback={null}>
         <group rotation={[0, Math.PI, 0]} position={[0, 1, 0]}>
@@ -57,5 +60,7 @@ export default function Start() {
       <ContactShadows position={[0, -4.5, 0]} scale={20} blur={2} far={4.5} />
       <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
     </Canvas>
-  )
+  );
 }
+
+export default Start;

@@ -43,13 +43,10 @@ const Navbar = () => {
           <a href="#">Compétences</a>
         </motion.div>
         <motion.div className='nav-link' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} variants={item}>
-          <a href="#">Projets</a>
+          <a href="/projet">Projets</a>
         </motion.div>
         <motion.div className='nav-link' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} variants={item}>
-          <a href="#">Stages</a>
-        </motion.div>
-        <motion.div className='nav-link' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} variants={item}>
-          <a href="#">Certifications</a>
+          <a href="/stage">Stages</a>
         </motion.div>
         <motion.div className='nav-link' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} variants={item}>
           <a href="#">Activité</a>

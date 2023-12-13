@@ -44,7 +44,9 @@
   }
   
   button:hover {
-    background-color: #007bb5;
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #000000;
   }
   
   button:active {

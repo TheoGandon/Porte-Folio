@@ -40,6 +40,12 @@
     border: none;
     
   }
+
+  .Send-button:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #000000;
+  }
   
   .icon {
     color: #000000

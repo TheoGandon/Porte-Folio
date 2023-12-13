@@ -26,7 +26,7 @@
   }
   
   .footer a:hover {
-    color: #55acee;
+    color: #00FF00;
   }
   
   .footer div:hover {
@@ -35,5 +35,9 @@
   
   .footer div:active {
     transform: scale(0.98);
+  }
+
+  .link a {
+    margin-left: 5%;
   }
   

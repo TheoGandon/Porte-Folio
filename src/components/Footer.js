@@ -17,23 +17,17 @@ const Footer = () => {
         <p>Email: theo.gandon9@gmail.com</p>
         <p>Téléphone: +33 6 76 63 61 02</p>
       </div>
-      <div>
+      <div className='link'>
         <h3>Suivez-moi</h3>
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <a href="#">
             <FaLinkedin size={30} />
           </a>
-        </motion.div>
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <a href="#">
             <FaTwitter size={30} />
           </a>
-        </motion.div>
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <a href="#">
             <FaGithub size={30} />
           </a>
-        </motion.div>
       </div>
     </motion.footer>
   );

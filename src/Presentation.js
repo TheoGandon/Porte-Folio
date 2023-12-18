@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import './css/Presentation.css';
 import './App.css';
 import CV from './Asset/CV.pdf';
+import PDP from './Asset/profile.png';
 import { FaPhp, FaSwift, FaCss3, FaHtml5, FaJs, FaDatabase, FaPython, FaReact, FaMobile, FaJava } from 'react-icons/fa';
 import { SiSymfony } from 'react-icons/si';
 import Modal from 'react-modal';
@@ -110,7 +111,7 @@ const Presentation = () => {
             <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={openModal}>Visualiser CV </motion.button>
             <Modal isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="CV Modal" className='modal'>
               <button className='close-cv' onClick={closeModal}>Fermer</button>
-              <iframe title="CV" src={CV} style={{ width: '100%', height: '800px' }} />
+              <iframe title="CV" src={CV} style={{ width: '100%', height: '600px' }} />
             </Modal>
           </div>
         </motion.div>
@@ -130,7 +131,16 @@ const Presentation = () => {
           </motion.div>
         </div>
         <div className="test-container">
-          <h2>??????????????</h2>
+        <h2>A propos de moi</h2>
+        <div class="outer-circle">
+          <div class="inner-circle"> 
+          <img className='img-main' src={PDP} alt='' />
+        </div>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         </div>
       </div>
       <Footer />

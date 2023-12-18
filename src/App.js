@@ -6,6 +6,7 @@ import Contact from "./Contact"
 import Projet from "./Projet"
 import Stage from "./Stage"
 import Projet1 from "./projets/Projets1"
+import Competences from "./Competences"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/projet" element={ <Projet /> } />
         <Route path="/stage" element={ <Stage /> } />
         <Route path="/projet1" element={ <Projet1 /> } />
+        <Route path="/competences" element={ <Competences /> } />
       </Routes>
     </div>
   )

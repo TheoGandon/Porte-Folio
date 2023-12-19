@@ -57,9 +57,6 @@ const Navbar = () => {
           <a href="/stage">Stages</a>
         </motion.div>
         <motion.div className='nav-link' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} variants={item}>
-          <a href="#">Activité</a>
-        </motion.div>
-        <motion.div className='nav-link' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} variants={item}>
           <a href="/contact">Contact</a>
         </motion.div>
       </div>

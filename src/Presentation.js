@@ -4,13 +4,13 @@ import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 import './css/Presentation.css';
 import './App.css';
-import CV from './Asset/CV.pdf';
 import PDP from './Asset/profile.png';
 import { FaPhp, FaSwift, FaCss3, FaHtml5, FaJs, FaDatabase, FaPython, FaReact, FaMobile, FaJava } from 'react-icons/fa';
 import { SiSymfony } from 'react-icons/si';
 import Modal from 'react-modal';
 import { useState } from 'react';
-
+import ModalPdf from './components/ModalPdf';
+import CV from './Asset/CV.pdf';
 
 
 const skillsData = [
@@ -28,16 +28,9 @@ const skillsData = [
 ];
 
 const Presentation = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
+  const PDF = CV;
+  Modal.setAppElement('#root');
   const cardVariants = {
     offscreen: {
       y: 300,
@@ -72,6 +65,7 @@ const Presentation = () => {
 
     const index = skillsData.findIndex((skill) => skill.icon === icon);
     const iconElement = React.createElement(icon, { size: 200, color: iconColors[index % iconColors.length] });
+    
 
     return (
       <motion.div
@@ -102,18 +96,7 @@ const Presentation = () => {
           <p className='text-presentation'>
           Je suis Théo Gandon, étudiant en informatique à l'EPSI Lille. Passionné par les technologies émergentes et l'innovation, je m'efforce de développer mes compétences dans le vaste monde de l'informatique. Mon portfolio est le reflet de mon parcours académique et de mes projets personnels, mettant en lumière ma créativité et mon engagement envers l'excellence technique. Explorez mon univers numérique et découvrez les différentes facettes de mon parcours informatique. Bienvenue dans mon monde technologique.
           </p>
-          <div className="buttons-container">
-            <a href={CV} target="_blank" rel="noopener noreferrer" download>
-              <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                Télécharger CV
-              </motion.button>
-            </a>
-            <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={openModal}>Visualiser CV </motion.button>
-            <Modal isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="CV Modal" className='modal'>
-              <button className='close-cv' onClick={closeModal}>Fermer</button>
-              <iframe title="CV" src={CV} style={{ width: '100%', height: '600px' }} />
-            </Modal>
-          </div>
+          <ModalPdf PDF={PDF} />
         </motion.div>
       </div>
       <div className="skill-bg">
@@ -126,21 +109,32 @@ const Presentation = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             {skillsData.map((skill, index) => (
-              <Card key={index} icon={skill.icon} />
+              <Card className="icons" key={index} icon={skill.icon} />
             ))}
           </motion.div>
         </div>
         <div className="test-container">
         <h2>A propos de moi</h2>
-        <div class="outer-circle">
-          <div class="inner-circle"> 
-          <img className='img-main' src={PDP} alt='' />
+        <div class="shape-outer circle">
+	        <div class="shape-inner circle"><img src={PDP} alt="profile" />a</div>
         </div>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <p>
+          Je m'appelle Théo GANDON et je suis passionné par le développement web et mobile. Actuellement étudiant à l'EPSI Lille depuis 2022.
+
+Compétences techniques :
+Développement Web : Maîtrise des langages PHP, Symfony, et JavaScript (React Native / JS) pour concevoir des applications web interactives et modernes.
+
+Base de données : Expérience approfondie avec MySQL pour assurer la gestion efficace des données et optimiser les performances des applications.
+
+Développement Mobile : Connaissance de Swift pour la création d'applications iOS, ainsi qu'en React Native pour le développement d'applications multiplateformes.
+
+Langage polyvalent : Aptitude à utiliser Python pour automatiser des tâches, créer des scripts et résoudre des problèmes de manière efficace.
+
+Au fil de mon parcours académique et professionnel, j'ai eu l'opportunité de travailler sur divers projets qui ont enrichi mes compétences et ma compréhension du développement logiciel. Mon portfolio est le reflet de cette expérience, mettant en avant mes réalisations et démontrant ma capacité à relever des défis techniques.
+
+N'hésitez pas à explorer mon portfolio pour découvrir mes projets passés, mes compétences techniques. Merci de votre visite, et n'hésitez pas à me contacter pour discuter de projets passionnants ou d'opportunités de collaboration.
+          
+          </p>        
         </div>
       </div>
       <Footer />
